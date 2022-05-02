@@ -237,8 +237,8 @@ download_source()
   done
 
   # Downloading file
-  if [ ${local_archive:-''} == "local-archvie" ]; then
-    # git archive --format tar.gz --prefix ossec-hids-${ossec_version}/ --output contrib/debian-packages/ossec-hids-${ossec_version}.tar.gz HEAD
+  if [ ${local_archive:-''} == "local-archive" ]; then
+	# skip download
     if [ -f $scriptpath/${source_file} ]; then
       echo "Use downloaded local file ${source_file} as source" | write_log
 	else
