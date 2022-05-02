@@ -2,7 +2,7 @@ Source: ossec-hids-agent
 Section: admin
 Priority: extra
 Maintainer: Santiago Bassett <santiago.bassett@gmail.com>
-Build-Depends: debhelper (>= 7.0.50~), linux-libc-dev, libssl-dev, libevent-dev, libpcre2-dev, zlib1g-dev
+Build-Depends: debhelper (>= 7.0.50~), linux-libc-dev, libssl-dev, libevent-dev, libpcre2-dev, libsystemd-dev, zlib1g-dev
 Standards-Version: 3.8.4
 Homepage: http://www.ossec.net
 
