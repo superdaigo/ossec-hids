@@ -225,6 +225,7 @@ update_chroots()
 download_source()
 {
   cd ${scriptpath}
+  local_archive="$1"
 
   # Checking that Debian files exist for this version
   for package in ${packages[*]}
@@ -236,11 +237,21 @@ download_source()
   done
 
   # Downloading file
-  if wget -O $scriptpath/${source_file} -U ossec https://github.com/ossec/ossec-hids/archive/${ossec_version}.tar.gz ; then
-    echo "Successfully downloaded source file ${source_file} from ossec.net" | write_log
+  if [ ${local_archive:-''} == "local-archvie" ]; then
+    # git archive --format tar.gz --prefix ossec-hids-${ossec_version}/ --output contrib/debian-packages/ossec-hids-${ossec_version}.tar.gz HEAD
+    if [ -f $scriptpath/${source_file} ]; then
+      echo "Use downloaded local file ${source_file} as source" | write_log
+	else
+      echo "Error: File ${source_file} was not found" | write_log
+      exit 1
+	fi
   else
-    echo "Error: File ${source_file} was could not be downloaded" | write_log
-    exit 1
+    if wget -O $scriptpath/${source_file} -U ossec https://github.com/ossec/ossec-hids/archive/${ossec_version}.tar.gz ; then
+      echo "Successfully downloaded source file ${source_file} from ossec.net" | write_log
+    else
+      echo "Error: File ${source_file} was could not be downloaded" | write_log
+      exit 1
+    fi
   fi
 
   # Uncompressing files
@@ -436,6 +447,11 @@ case $key in
     ;;
   -d|--download)
     download_source
+    shift
+    exit 0
+    ;;
+  -a|--local-archive)
+    download_source "local-archive"
     shift
     exit 0
     ;;
