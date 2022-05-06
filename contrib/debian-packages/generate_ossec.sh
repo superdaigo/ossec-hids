@@ -196,6 +196,7 @@ update_chroots()
   do
     for arch in ${architectures[@]}
     do
+	  sudo mkdir -p "/var/cache/pbuilder/$codename-$arch/aptcache"
       if [ -f /var/cache/pbuilder/$codename-$arrch-base.tgz ]; then
         echo "Updating chroot environment: ${codename}-${arch}" | write_log
         if sudo DIST=$codename ARCH=$arch pbuilder update --configfile $scriptpath/pbuilderrc ; then
