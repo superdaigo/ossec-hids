@@ -80,6 +80,10 @@ case "$1" in
 	chmod 770 ${DIR}/etc/shared
 	chmod 660 ${DIR}/etc/shared/*
 
+	# For the /tmp
+	mkdir -p ${DIR}/tmp
+	chmod 750 ${DIR}/tmp
+
 	# For the /var/run
 	chmod 770 ${DIR}/var/run
 	chown root:${GROUP} ${DIR}/var/run
