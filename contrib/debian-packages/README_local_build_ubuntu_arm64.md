@@ -1,4 +1,4 @@
-# OSSEC agent local build
+# OSSEC agent local build for Ubuntu Arm64
 
 The following step describes how to build unofficial OSSEC agent (v3.7.0) for Ubuntu Arm64 servers(18.04, 20.04, 22.04).
 
@@ -9,7 +9,7 @@ Expected results:
 
 ## Requirements
 
-- Ubuntu server (I've tested the script by using Ubuntu 22.04 Arm64 VM)
+- Ubuntu server (I've tested the script by using Ubuntu 20.04 and 22.04 VM)
 - debootstrap, qemu-user-static, schroot, pbuilder
 
 Install required packages.
