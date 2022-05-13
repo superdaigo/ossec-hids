@@ -34,7 +34,7 @@ codenames_ubuntu=(precise trusty xenial bionic focal jammy)
 codenames_debian=(sid jessie wheezy)
 
 # architectures=(amd64 i386) only options available
-architectures=(arm64)
+architectures=(arm64 amd64)
 
 # Debian files
 debian_files_path="/home/ubuntu/debian_files"
